@@ -8,8 +8,4 @@ import { Component, input, output } from '@angular/core';
 export class SearchInputComponent {
   placeholder = input('Buscar');
   value = output<string>();
-  //  Método que emite lo que el usuario escribe
-  emitirValor(texto: string) {
-    this.value.emit(texto);
-  }
 }

@@ -11,23 +11,15 @@ import { rxResource } from '@angular/core/rxjs-interop';
   templateUrl: './by-country-page.component.html',
 })
 export class ByCountryPageComponent {
-  contryService = inject(CountryService);
-  query = signal(' ');
+  countryService = inject(CountryService);
+  query = signal('');
 
   countryResource = rxResource({
     request: () => ({ query: this.query() }),
     loader: ({ request }) => {
       if (!request.query) return of([]);
-      return this.contryService.serchByCountry(request.query);
+
+      return this.countryService.searchByCountry(request.query);
     },
   });
-  /*countryResource = resource({
-    request: () => ({ query: this.query() }),
-    loader: async ({ request }) => {
-      if (!request.query) return [];
-      return await firstValueFrom(
-        this.contryService.serchByCountry(request.query)
-      );
-    },
-  });*/
 }

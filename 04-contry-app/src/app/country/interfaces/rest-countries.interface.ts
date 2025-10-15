@@ -3,29 +3,29 @@ export interface RESTCountry {
   tld: string[];
   cca2: string;
   ccn3: string;
-  cioc: string;
+  cca3: string;
+  cioc?: string;
   independent: boolean;
   status: string;
   unMember: boolean;
-  currencies: Currencies;
+  currencies: { [key: string]: Currency };
   idd: Idd;
   capital: string[];
   altSpellings: string[];
   region: string;
   subregion: string;
   languages: Languages;
+  translations: { [key: string]: Translation };
   latlng: number[];
   landlocked: boolean;
-  borders: string[];
+  borders?: string[];
   area: number;
   demonyms: Demonyms;
-  cca3: string;
-  translations: { [key: string]: Translation };
   flag: string;
   maps: Maps;
   population: number;
-  gini: Gini;
-  fifa: string;
+  gini?: { [key: string]: number };
+  fifa?: string;
   car: Car;
   timezones: string[];
   continents: string[];
@@ -33,7 +33,7 @@ export interface RESTCountry {
   coatOfArms: CoatOfArms;
   startOfWeek: string;
   capitalInfo: CapitalInfo;
-  postalCode: PostalCode;
+  postalCode?: PostalCode;
 }
 
 export interface CapitalInfo {
@@ -46,22 +46,18 @@ export interface Car {
 }
 
 export interface CoatOfArms {
-  png: string;
-  svg: string;
+  png?: string;
+  svg?: string;
 }
 
-export interface Currencies {
-  EUR: Eur;
-}
-
-export interface Eur {
-  symbol: string;
+export interface Currency {
   name: string;
+  symbol: string;
 }
 
 export interface Demonyms {
   eng: Eng;
-  fra: Eng;
+  fra?: Eng;
 }
 
 export interface Eng {
@@ -72,11 +68,7 @@ export interface Eng {
 export interface Flags {
   png: string;
   svg: string;
-  alt: string;
-}
-
-export interface Gini {
-  '2018': number;
+  alt?: string;
 }
 
 export interface Idd {
@@ -85,7 +77,23 @@ export interface Idd {
 }
 
 export interface Languages {
-  est: string;
+  eng?: string;
+  hin?: string;
+  tam?: string;
+  ber?: string;
+  mey?: string;
+  spa?: string;
+  fra?: string;
+  nrf?: string;
+  deu?: string;
+  nld?: string;
+  mri?: string;
+  nzs?: string;
+  cat?: string;
+  srp?: string;
+  fin?: string;
+  swe?: string;
+  bjz?: string;
 }
 
 export interface Maps {
@@ -96,11 +104,7 @@ export interface Maps {
 export interface Name {
   common: string;
   official: string;
-  nativeName: NativeName;
-}
-
-export interface NativeName {
-  est: Translation;
+  nativeName: { [key: string]: Translation };
 }
 
 export interface Translation {
